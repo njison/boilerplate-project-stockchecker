@@ -9,6 +9,9 @@ const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 
 const app = express();
+const helmet = require('helmet');
+
+app.use(helmet.contentSecurityPolicy({ directives: { styleSrc: ["'self'"], scriptSrc: ["'self'"]}} )) 
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
